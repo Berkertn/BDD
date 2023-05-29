@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class EbayHomeSteps {
+public class EbayHomeSteps extends BaseSteps {
 
     @Given("I am on Ebay Home Page")
     public void i_am_on_ebay_home_page() {
