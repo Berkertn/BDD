@@ -1,4 +1,6 @@
 package steps;
 
-public abstract class BaseSteps {
+import tests.BaseTest;
+public abstract class BaseSteps extends BaseTest {
+
 }

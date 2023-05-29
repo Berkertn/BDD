@@ -1,6 +1,6 @@
 Feature: Ebay Home Page Scenarios
 
-  @regression
+  @regression @P1
   Scenario: Advanced Search Link
     Given I am on Ebay Home Page
     When I click on Advanced Link
