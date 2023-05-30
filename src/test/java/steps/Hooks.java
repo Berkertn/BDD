@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
+import runner.ScreenshotTestWatcher;
 import tests.BaseTest;
 import utils.DriverManager;
 
@@ -20,13 +21,12 @@ public class Hooks {
         System.out.println("Tests Are Deploying...");
         driver = DriverManager.init("chrome");
         driver.get(DriverManager.baseUrl);
+        ScreenshotTestWatcher testWatcher = new ScreenshotTestWatcher(driver);
     }
 
     @After
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            testFunctions.takeScreenshot(scenario.getName(), scenario.getId());
-        }
+    public void tearDown() {
+
         System.out.println("Tearing Down");
         driver.quit();
     }
