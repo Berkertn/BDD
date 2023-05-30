@@ -30,7 +30,7 @@ public class BaseTest {
         actions.moveToElement(element).perform();
     }
 
-    void takeScreenshot(String testMethod, String testClass) {
+    public void takeScreenshot(String testMethod, String testClass) {
         Date date = new Date();
         String screenshotsDir = "src/test/resources/ScreenshotsOfDefects/";
         String extension = ".png";
