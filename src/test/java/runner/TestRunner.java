@@ -2,6 +2,7 @@ package runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.ClassRule;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -14,4 +15,5 @@ import org.junit.runner.RunWith;
         //,name = "nameFilterTest" filter the name of scenario and run
 )
 public class TestRunner {
+    // Other runner configurations and methods
 }
