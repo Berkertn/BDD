@@ -1,23 +1,49 @@
 package steps;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
+import org.junit.Rule;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import pages.HomePage;
+import runner.ScreenshotTestWatcher;
+import tests.BaseTest;
+import org.assertj.core.api.SoftAssertions;
+import utils.DriverManager;
 
-public class EbayHomeSteps extends BaseSteps {
+import java.time.Duration;
 
-    @Given("I am on Ebay Home Page")
-    public void i_am_on_ebay_home_page() {
-        System.out.println("I have a precondition");
+public class EbayHomeSteps {
+
+    BaseTest testFunctions = new BaseTest();
+    WebDriver driver = Hooks.getDriver();
+    protected SoftAssertions softAssertion = new SoftAssertions();
+
+    // declaring POMs'
+    HomePage homePage;
+
+
+    @Rule
+    public ScreenshotTestWatcher testWatcher = new ScreenshotTestWatcher(driver);
+
+    @Given("I am on Tech Crunch Home Page")
+    public void home_page() {
+        System.out.println("perform the first");
+        homePage = new HomePage(driver);
     }
 
-    @When("I click on Advanced Link")
-    public void i_click_on_advanced_link() {
-        System.out.println("I perform an action");
+    @When("I click on Login Button")
+    public void click_on_login_button() {
+        WebElement loginButton = homePage.getElement(homePage.loginButtonSelector);
+        loginButton.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @Then("I navigate to Advanced Search page")
+    @Then("I navigate to Login page")
     public void i_navigate_to_advanced_search_page() {
-        System.out.println("I came I saw praise to Lord");
+        WebElement theLatestNewsElement;
+        softAssertion.assertThat(homePage.getBrowserTitle())
+                .as("Element Text Content Check for login button ")
+                .doesNotContain("TechCrunch");
+        softAssertion.assertAll();
     }
 }

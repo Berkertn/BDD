@@ -9,13 +9,20 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
-public abstract class DriverManager {
+public  class DriverManager {
 
     public WebDriver driver;
     public static String baseUrl = "https://techcrunch.com/";
 
+    private DriverManager(String testBrowser) {
+        setDriver(testBrowser);
+    }
 
-    public void setDriver(String testBrowser) {
+    public static WebDriver init(String testBrowser) {
+        return new DriverManager(testBrowser).driver;
+    }
+
+    private void setDriver(String testBrowser) {
         switch (testBrowser) {
             case "chrome": {
                 WebDriverManager.chromedriver().setup();
@@ -39,7 +46,6 @@ public abstract class DriverManager {
             }
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
     }
 
 }

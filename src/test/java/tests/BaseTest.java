@@ -1,10 +1,8 @@
 package tests;
 
 import org.assertj.core.api.SoftAssertions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-import utils.DriverManager;
+
+import steps.Hooks;
 
 import java.util.Random;
 
@@ -16,26 +14,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-public abstract class BaseTest extends DriverManager {
+public class BaseTest {
     protected SoftAssertions softAssertion;
     protected Random random;
-
-    @BeforeAll
-    public void setUp() {
-        setDriver("chrome");
-    }
-
-    @Before
-    public void beforeTestCases() {
-        driver.get(baseUrl);
-        softAssertion = new SoftAssertions();
-        random = new Random();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+    WebDriver driver = Hooks.getDriver();
 
     //helper functions
     public void scrollToTheElement(WebElement element) {
@@ -48,7 +30,7 @@ public abstract class BaseTest extends DriverManager {
         actions.moveToElement(element).perform();
     }
 
-    void takeScreenshot(String testMethod, String testClass) {
+    public void takeScreenshot(String testMethod, String testClass) {
         Date date = new Date();
         String screenshotsDir = "src/test/resources/ScreenshotsOfDefects/";
         String extension = ".png";

@@ -2,7 +2,11 @@ package runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.runner.RunWith;
+import steps.Hooks;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -14,4 +18,17 @@ import org.junit.runner.RunWith;
         //,name = "nameFilterTest" filter the name of scenario and run
 )
 public class TestRunner {
+
+    @ClassRule
+    public static ScreenshotTestWatcher customTestWatcher = new ScreenshotTestWatcher(Hooks.getDriver());
+
+    @BeforeClass
+    public static void setUp() {
+        // Test setup code
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        // Test teardown code
+    }
 }
