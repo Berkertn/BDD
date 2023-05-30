@@ -19,9 +19,20 @@ public class Hooks extends DriverManager {
         driver.get(DriverManager.baseUrl);
     }
 
+    @After(order = 1)
+    public void afterScenario(Scenario scenario) {
+        if (scenario.isFailed()) {
+            // Test failed, perform actions
+            System.out.println("Test failed: " + scenario.getName());
+
+            // Take a screenshot or perform any other necessary actions
+            testFunctions.takeScreenshot(scenario.getName(), scenario.getClass().toString());
+        }
+    }
+
     @After(order = 0)
     public void tearDown() {
-        System.out.println("Tearing Down");
+        System.out.println("Tearing Down Latest");
         driver.quit();
     }
 }

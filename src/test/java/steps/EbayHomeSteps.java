@@ -41,6 +41,7 @@ public class EbayHomeSteps {
         softAssertion.assertThat(homePage.getBrowserTitle())
                 .as("Element Text Content Check for login button ")
                 .doesNotContain("TechCrunch");
+                //.contains("TechCrunch");
         softAssertion.assertAll();
     }
 }
