@@ -1,9 +1,11 @@
 package steps;
 
 import io.cucumber.java.en.*;
+import org.junit.Rule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.HomePage;
+import runner.ScreenshotTestWatcher;
 import tests.BaseTest;
 import org.assertj.core.api.SoftAssertions;
 import utils.DriverManager;
@@ -18,6 +20,10 @@ public class EbayHomeSteps {
 
     // declaring POMs'
     HomePage homePage;
+
+
+    @Rule
+    public ScreenshotTestWatcher testWatcher = new ScreenshotTestWatcher(driver);
 
     @Given("I am on Tech Crunch Home Page")
     public void home_page() {

@@ -21,7 +21,6 @@ public class Hooks {
         System.out.println("Tests Are Deploying...");
         driver = DriverManager.init("chrome");
         driver.get(DriverManager.baseUrl);
-        ScreenshotTestWatcher testWatcher = new ScreenshotTestWatcher(driver);
     }
 
     @After
