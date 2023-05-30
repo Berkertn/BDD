@@ -9,15 +9,15 @@ import java.util.Random;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import utils.DriverManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-public class BaseTest {
+public class BaseTest extends DriverManager {
     protected SoftAssertions softAssertion;
     protected Random random;
-    WebDriver driver = Hooks.getDriver();
 
     //helper functions
     public void scrollToTheElement(WebElement element) {
