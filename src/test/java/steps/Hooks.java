@@ -23,9 +23,8 @@ public class Hooks {
         driver.get(DriverManager.baseUrl);
     }
 
-    @After
+    @After(order = 0)
     public void tearDown() {
-
         System.out.println("Tearing Down");
         driver.quit();
     }

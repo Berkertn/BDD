@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
-public class DriverManager {
+public  class DriverManager {
 
     public WebDriver driver;
     public static String baseUrl = "https://techcrunch.com/";
