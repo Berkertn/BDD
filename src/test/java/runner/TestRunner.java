@@ -19,9 +19,6 @@ import steps.Hooks;
 )
 public class TestRunner {
 
-    @ClassRule
-    public static ScreenshotTestWatcher customTestWatcher = new ScreenshotTestWatcher(Hooks.getDriver());
-
     @BeforeClass
     public static void setUp() {
         // Test setup code
