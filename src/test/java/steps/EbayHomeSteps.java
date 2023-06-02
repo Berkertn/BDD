@@ -12,14 +12,7 @@ import utils.DriverManager;
 
 import java.time.Duration;
 
-public class EbayHomeSteps {
-
-    BaseTest testFunctions = new BaseTest();
-    Hooks hooks = new Hooks();
-    WebDriver driver = hooks.getDriver();
-    protected SoftAssertions softAssertion = new SoftAssertions();
-
-    // declaring POMs'
+public class EbayHomeSteps extends CommonSteps {
     HomePage homePage;
 
 
@@ -31,8 +24,8 @@ public class EbayHomeSteps {
 
     @When("I click on {string} Button")
     public void click_on_login_button(String buttonName) throws Exception {
-        WebElement wantedButton = driver.findElement(By.cssSelector(buttonName)); //ex
-        wantedButton.click();
+        WebElement wantedButton = homePage.getElement(homePage.loginButtonSelector);
+        clickButton(wantedButton);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
